@@ -1,0 +1,31 @@
+{
+  "name": "CommandInterface",
+  "version": "1.0.0",
+  "description": "Command-line interface system for ESP32 with support for untyped and strongly-typed commands, password protection, and multi-stream I/O",
+  "keywords": [
+    "cli",
+    "command",
+    "interface",
+    "serial",
+    "terminal",
+    "esp32",
+    "console",
+    "password"
+  ],
+  "authors": [
+    {
+      "name": "Felipe Dadison"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/FelipeDadison/CommandInterface",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FelipeDadison/CommandInterface.git"
+  },
+  "frameworks": ["arduino"],
+  "platforms": ["espressif32"],
+  "build": {
+    "srcDir": "src"
+  }
+}
