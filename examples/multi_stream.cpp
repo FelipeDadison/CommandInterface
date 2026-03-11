@@ -50,6 +50,7 @@ void setup() {
         Serial.println(WiFi.localIP());
     } else {
         Serial.println("\nFailed to connect to WiFi");
+        while (true) {}
     }
     
     // Start web server and WebSerial
