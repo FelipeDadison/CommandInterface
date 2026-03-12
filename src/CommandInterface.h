@@ -257,7 +257,7 @@ void CommandInterface::registerTypedCommand(
     entry.argSpecs = argSpecs;
     entry.isTyped = true;
     auto cb = std::function<void(Args...)>(std::forward<Callback>(callback));
-    entry.callback = [=](const String& argsStr) {
+    entry.callback = [=, this](const String& argsStr) {
         std::vector<String> args = splitArgs(argsStr);
         if (args.size() != sizeof...(Args)) {
             printlnToAll("Invalid argument count.");
