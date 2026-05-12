@@ -1,6 +1,6 @@
 {
   "name": "CommandInterface",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command-line interface system for ESP32 with support for untyped and strongly-typed commands, password protection, and multi-stream I/O",
   "keywords": [
     "cli",

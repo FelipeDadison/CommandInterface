@@ -2,8 +2,8 @@
  * @file CommandInterface.h
  * @brief Command-line interface system for ESP32 with password protection and typed arguments
  * @author Felipe Dadison
- * @version 1.0.0
- * @date 2026-03-10
+ * @version 1.0.1
+ * @date 2026-05-12
  * 
  * Provides a flexible command registration system with support for untyped and strongly-typed
  * command arguments, password protection, and multi-stream input/output handling.
@@ -257,7 +257,7 @@ void CommandInterface::registerTypedCommand(
     entry.argSpecs = argSpecs;
     entry.isTyped = true;
     auto cb = std::function<void(Args...)>(std::forward<Callback>(callback));
-    entry.callback = [=, this](const String& argsStr) {
+    entry.callback = [cb, this](const String& argsStr) {
         std::vector<String> args = splitArgs(argsStr);
         if (args.size() != sizeof...(Args)) {
             printlnToAll("Invalid argument count.");
