@@ -158,6 +158,7 @@ Complete sketches are in [`examples/`](examples). The `multi_stream` example req
 
 ### Core Methods
 - `void update()` - Process incoming commands (call in main loop)
+- `void setMaxCommandLength(length)` - Maximum command length including arguments (default: 256)
 - `void registerCommand(name, description, callback)` - Register untyped command
 - `void registerTypedCommand<Args...>(name, description, argSpecs, callback)` - Register typed command
 - `static std::vector<String> splitArgs(input)` - Split arguments by separator (empty arguments are kept)
@@ -194,7 +195,7 @@ Two consecutive separators produce an empty argument: `command\a\\c` has the arg
 
 ## Limits
 
-- Commands longer than 256 characters are discarded with `Command too long.`
+- Commands longer than 256 characters are discarded with `Command too long.` Raise the limit with `Cli.setMaxCommandLength(2048)`, e.g. for commands carrying certificates or keys.
 - The help command is `?`; while a stream is locked, only `?` and `PASSWORD` are accepted.
 
 ## Security

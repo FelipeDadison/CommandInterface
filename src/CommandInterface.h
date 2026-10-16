@@ -2,7 +2,7 @@
  * @file CommandInterface.h
  * @brief Command-line interface system for ESP32 with password protection and typed arguments
  * @author Felipe Dadison
- * @version 1.1.0
+ * @version 1.1.1
  * @date 2026-10-16
  *
  * Provides a flexible command registration system with support for untyped and strongly-typed
@@ -86,6 +86,13 @@ class CommandInterface : public Print {
          * Call this regularly in your main loop to handle commands
          */
         void update();
+
+        /**
+         * @brief Set the maximum command length, including arguments
+         * Longer commands are discarded with "Command too long.". Default is 256.
+         * @param length Maximum number of characters per command
+         */
+        void setMaxCommandLength(size_t length);
 
         using Print::write;
 
@@ -261,7 +268,7 @@ class CommandInterface : public Print {
         std::vector<Stream*> _outputStreams;
         Stream* _currentStream = nullptr;
 
-        const size_t MAX_COMMAND_LENGTH = 256;
+        size_t _maxCommandLength = 256;
         const unsigned long LOGIN_BASE_DELAY_MS = 1000;
 
         String _projectName = "UnnamedProject";

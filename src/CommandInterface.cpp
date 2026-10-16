@@ -2,7 +2,7 @@
  * @file CommandInterface.cpp
  * @brief Implementation of command-line interface system for ESP32
  * @author Felipe Dadison
- * @version 1.1.0
+ * @version 1.1.1
  * @date 2026-10-16
  *
  * Implements command parsing, execution, password protection, and formatted output.
@@ -103,13 +103,17 @@ void CommandInterface::update() {
                         handleCommand(i, cmd);
                     }
                 }
-            } else if (input.buffer.length() < MAX_COMMAND_LENGTH) {
+            } else if (input.buffer.length() < _maxCommandLength) {
                 input.buffer += (char)c;
             } else {
                 input.overflow = true;
             }
         }
     }
+}
+
+void CommandInterface::setMaxCommandLength(size_t length) {
+    _maxCommandLength = length;
 }
 
 size_t CommandInterface::write(uint8_t b) {
